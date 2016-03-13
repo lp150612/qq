@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实践题 - 选项卡</title>
+    <style type="text/css">
+		#box{
+			text-align:center;
+			margin:10px 0px;
+		}
+		.btn{
+			width:50px;
+			height:30px;
+			display:inline-block;
+			background:blue;
+			margin:0 10px;
+			border-radius:10px;
+			cursor:pointer;
+			
+		}
+		span{
+			width:350px;
+			height:30px;
+			display:block;
+			font-size:30px;
+			font-weight:bold;
+			margin:150px auto 0 auto;
+			text-align:center;
+		}
+		
+		
+    </style>
+	<script  type="text/javascript" src="util.js"></script>
+	<script  type="text/javascript" src="dx.js"></script>
+    <script type="text/javascript">
+		window.onload=function(){
+			var sp=document.getElementsByTagName("span")[0];
+			var start=document.getElementById("start");
+			var end=document.getElementById("end");
+			var timer=null;
+			var arr=["洗衣机","电冰箱","空调","微波炉","烤箱","谢谢惠顾"];
+			var flag=0;
+			//鼠标操作
+			start.onclick=function(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					var index=Math.floor(Math.random()*6);
+					//alert(arr[index]);
+					//alert(sp.innerHTML)
+					sp.innerHTML=arr[index];
+				},30)
+				end.onclick=function(){
+					clearInterval(timer);
+					
+				}
+				
+			}
+			//键盘操作
+			document.onkeydown=function(){
+				if(flag==0){
+					clearInterval(timer);
+					timer=setInterval(function(){
+						var index=Math.floor(Math.random()*6);
+						//alert(arr[index]);
+						//alert(sp.innerHTML)
+						sp.innerHTML=arr[index];
+					},30)
+					flag=1;
+				}else{
+					clearInterval(timer);
+					flag=0;
+				}
+				
+				
+			}
+			
+		}
+	</script>
+</head>
+<body>
+<div id="div">
+	<span>抽奖系统</span>
+	<div id="box">
+		<div id="start" class="btn">开始</div>
+		<div id="end" class="btn">结束</div>
+	</div>
+	
+</div>
+</body>
+</html>
